@@ -1,12 +1,11 @@
-import { cityNames, data } from './data';
+import { cityNames, data, dataByNav } from './data';
 const suggestions = document.querySelector('.suggestions');
 const cityName = document.querySelector('.city-name');
 const wIcon = document.querySelector('.country-name');
 const tempC = document.querySelector('#temparature-c');
 const tempF = document.querySelector('#temparature-F');
 const weatherStatus = document.querySelector('.status');
-
-
+const weatherIcon = document.querySelector('#weather-icon');
 
 const findMatches = async (matchingWord) => {
   const cities = await cityNames();
@@ -29,15 +28,26 @@ const displayMatches = async (e) => {
 };
 
 const displayWeather = async (input) => {
+  suggestions.innerHTML = ' ';
   const cityInfo = await data(input);
 
-  cityName.textContent = cityInfo.displayWeather;
-  wIcon.innerHTML = cityInfo.icon;
-  tempF.textContent = cityInfo.temperature;
-  tempC.textContent = `${Math.round(cityInfo.temperature / 32 * 5/9)}`;
+  cityName.textContent = cityInfo.cityName;
+  weatherIcon.src = `http://openweathermap.org/img/w/${cityInfo.icon}.png`;
+  tempF.textContent = `${Math.round(cityInfo.temperature)} F`;
+  tempC.textContent = `${Math.round(cityInfo.temperature / 32 * 5/9)} C`;
   weatherStatus.textContent = cityInfo.status;
 
   suggestions.innerHTML = ' ';
 };
 
-export { displayMatches, displayWeather };
+const displayWeatherByNav = async (lat, lon) => {
+  const cityInfo = await dataByNav(lat, lon);
+  cityName.textContent = cityInfo.cityName;
+  weatherIcon.src = `http://openweathermap.org/img/w/${cityInfo.icon}.png`;
+  tempF.textContent = `${Math.round(cityInfo.temperature)} F`;
+  tempC.textContent = `${Math.round(cityInfo.temperature / 32 * 5/9)} C`;
+  weatherStatus.textContent = cityInfo.status;
+  suggestions.innerHTML = ' ';
+};
+
+export { displayMatches, displayWeather, displayWeatherByNav };
