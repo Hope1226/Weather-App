@@ -1,9 +1,18 @@
 import './style.scss';
-import { data, cityNames} from './App/data';
+import './index.html';
+import { displayMatches, displayWeather } from './App/dom';
+import { data } from './App/data';
 
-const weather = async () => {
-  const weatherInfo = await data('Moscow');
+const searchInt = document.querySelector('#search-location');
+const searchForm = document.querySelector('#search-form');
 
-  console.log(weatherInfo.cityName);
-}
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  displayWeather(searchInt.value);
+  searchForm.reset();
+})
+
+searchInt.addEventListener('change', displayMatches);
+searchInt.addEventListener('keyup', displayMatches);
+
 

@@ -40,6 +40,26 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
+/***/ "./src/index.html":
+/*!************************!*\
+  !*** ./src/index.html ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/html-loader/dist/runtime/getUrl.js */ \"./node_modules/html-loader/dist/runtime/getUrl.js\");\n/* harmony import */ var _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0__);\n// Imports\n\nvar ___HTML_LOADER_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! ./assets/images/icons/geo-location-icon.svg */ \"./src/assets/images/icons/geo-location-icon.svg\"), __webpack_require__.b);\n// Module\nvar ___HTML_LOADER_REPLACEMENT_0___ = _node_modules_html_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_0___default()(___HTML_LOADER_IMPORT_0___);\nvar code = \"<!DOCTYPE html>\\n<html lang=\\\"en\\\">\\n<head>\\n  <meta charset=\\\"UTF-8\\\">\\n  <meta http-equiv=\\\"X-UA-Compatible\\\" content=\\\"IE=edge\\\">\\n  <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n  <title>Weather Forcasting App</title>\\n</head>\\n<body>\\n  <main class=\\\"add-container\\\">\\n    <header>\\n      <form id=\\\"search-form\\\">\\n        <input type=\\\"search\\\" id=\\\"search-location\\\" placeholder=\\\"Please enter the location\\\">\\n        <button id=\\\"search-btn\\\">Apply</button>\\n      </form>\\n      <a href=\\\"#\\\" id=\\\"geo-location\\\"><img src=\\\"\" + ___HTML_LOADER_REPLACEMENT_0___ + \"\\\" alt=\\\"geo-location-icon\\\"></a>\\n    </header>\\n    <ul class=\\\"suggestions\\\"></ul>\\n    <section class=\\\"display\\\">\\n      <div class=\\\"city-name-cont\\\">\\n        <h1 class=\\\"city-name\\\"></h1>\\n        <p class=\\\"country-name\\\"></p>\\n      </div>\\n      <div class=\\\"weather-info-cont\\\">\\n        <h2 id=\\\"temparature-c\\\" class=\\\"tempatures\\\"></h2>\\n        <h2 id=\\\"temparature-F\\\" class=\\\"tempatures\\\"></h2>\\n        <p class=\\\"status\\\"></p>\\n      </div>\\n    </section>\\n  </main>\\n</body>\\n</html>\";\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);\n\n//# sourceURL=webpack://weather-app/./src/index.html?");
+
+/***/ }),
+
+/***/ "./node_modules/html-loader/dist/runtime/getUrl.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/html-loader/dist/runtime/getUrl.js ***!
+  \*********************************************************/
+/***/ ((module) => {
+
+eval("\n\nmodule.exports = function (url, options) {\n  if (!options) {\n    // eslint-disable-next-line no-param-reassign\n    options = {};\n  }\n\n  if (!url) {\n    return url;\n  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign\n\n\n  url = String(url.__esModule ? url.default : url);\n\n  if (options.hash) {\n    // eslint-disable-next-line no-param-reassign\n    url += options.hash;\n  }\n\n  if (options.maybeNeedQuotes && /[\\t\\n\\f\\r \"'=<>`]/.test(url)) {\n    return \"\\\"\".concat(url, \"\\\"\");\n  }\n\n  return url;\n};\n\n//# sourceURL=webpack://weather-app/./node_modules/html-loader/dist/runtime/getUrl.js?");
+
+/***/ }),
+
 /***/ "./src/style.scss":
 /*!************************!*\
   !*** ./src/style.scss ***!
@@ -116,7 +136,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cityNames\": () => (/* binding */ cityNames),\n/* harmony export */   \"data\": () => (/* binding */ data)\n/* harmony export */ });\nconst apiWeatherApi = 'http://api.openweathermap.org/data/2.5/weather?q=';\nconst apiKey = '9cde3a28309a37c07f4f1fee395e2214';\nconst apiCitiesUrl = 'https://countriesnow.space/api/v0.1/countries'\n\nconst data = async (city) => {\n  const response = await fetch(`${apiWeatherApi}${city}&appid=${apiKey}`);\n  const data = await response.json();\n  const temperature = data.main.temp;\n  const feelsLike = data.main.feels_like;\n  const status = data.weather[0].description;\n  const icon = data.weather[0].icon;\n  const cityName = data.name;\n\n  return { cityName, temperature, feelsLike, status, icon };\n};\n\nconst cityNames = async () => {\n  const response = await fetch(apiCitiesUrl);\n  const rowData = await response.json();\n  const arrCountries = rowData.data;\n  let cityList = [];\n\n  arrCountries.forEach((obj) => {\n    obj.cities.forEach ((city) => {\n      cityList.push(city);\n    });\n  });\n\n  return cityList;\n};\n\n\n\n\n//# sourceURL=webpack://weather-app/./src/App/data.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"cityNames\": () => (/* binding */ cityNames),\n/* harmony export */   \"data\": () => (/* binding */ data)\n/* harmony export */ });\nconst apiWeatherApi = 'http://api.openweathermap.org/data/2.5/weather?q=';\nconst apiKey = '9cde3a28309a37c07f4f1fee395e2214';\nconst apiCitiesUrl = 'https://countriesnow.space/api/v0.1/countries'\n\nconst data = async (city) => {\n  const response = await fetch(`${apiWeatherApi}${city}&appid=${apiKey}`);\n  const data = await response.json();\n  const temperature = data.main.temp;\n  const feelsLike = data.main.feels_like;\n  const status = data.weather[0].description;\n  const icon = data.weather[0].icon;\n  const cityName = data.name;\n\n  return { cityName, temperature, feelsLike, status, icon };\n};\n\nconst cityNames = async () => {\n  const response = await fetch(apiCitiesUrl);\n  const rowData = await response.json();\n  const arrCountries = rowData.data;\n  let cityList = [];\n\n  arrCountries.forEach((obj) => {\n    obj.cities.forEach ((city) => {\n      cityList.push(city);\n    });\n  });\n\n  return cityList;\n};\n\n\n\n//# sourceURL=webpack://weather-app/./src/App/data.js?");
+
+/***/ }),
+
+/***/ "./src/App/dom.js":
+/*!************************!*\
+  !*** ./src/App/dom.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"displayMatches\": () => (/* binding */ displayMatches),\n/* harmony export */   \"displayWeather\": () => (/* binding */ displayWeather)\n/* harmony export */ });\n/* harmony import */ var _data__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./data */ \"./src/App/data.js\");\n\nconst suggestions = document.querySelector('.suggestions');\nconst cityName = document.querySelector('.city-name');\nconst wIcon = document.querySelector('.country-name');\nconst tempC = document.querySelector('#temparature-c');\nconst tempF = document.querySelector('#temparature-F');\nconst weatherStatus = document.querySelector('.status');\n\n\n\nconst findMatches = async (matchingWord) => {\n  const cities = await (0,_data__WEBPACK_IMPORTED_MODULE_0__.cityNames)();\n\n   return cities.filter((city) => {\n   const regax = new RegExp(matchingWord, 'gi');\n   return city.match(regax);\n });\n};\n\nconst displayMatches = async (e) => {\n  const matchArr = await findMatches(e.target.value);\n  const html = matchArr.map((city) => {\n    return`\n  <li class=\"matches\">\n    <span>${city}</span>\n  </li>`;\n  }).join('');\n  suggestions.innerHTML = html;\n};\n\nconst displayWeather = async (input) => {\n  const cityInfo = await (0,_data__WEBPACK_IMPORTED_MODULE_0__.data)(input);\n\n  cityName.textContent = cityInfo.displayWeather;\n  wIcon.innerHTML = cityInfo.icon;\n  tempF.textContent = cityInfo.temperature;\n  tempC.textContent = `${Math.round(cityInfo.temperature / 32 * 5/9)}`;\n  weatherStatus.textContent = cityInfo.status;\n\n  suggestions.innerHTML = ' ';\n};\n\n\n\n//# sourceURL=webpack://weather-app/./src/App/dom.js?");
 
 /***/ }),
 
@@ -126,7 +156,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ \"./src/style.scss\");\n/* harmony import */ var _App_data__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App/data */ \"./src/App/data.js\");\n\n\n\nconst weather = async () => {\n  const weatherInfo = await (0,_App_data__WEBPACK_IMPORTED_MODULE_1__.data)('Moscow');\n\n  console.log(weatherInfo.cityName);\n}\n\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ \"./src/style.scss\");\n/* harmony import */ var _index_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.html */ \"./src/index.html\");\n/* harmony import */ var _App_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App/dom */ \"./src/App/dom.js\");\n/* harmony import */ var _App_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App/data */ \"./src/App/data.js\");\n\n\n\n\n\nconst searchInt = document.querySelector('#search-location');\nconst searchForm = document.querySelector('#search-form');\n\nsearchForm.addEventListener('submit', (event) => {\n  event.preventDefault();\n  (0,_App_dom__WEBPACK_IMPORTED_MODULE_2__.displayWeather)(searchInt.value);\n  searchForm.reset();\n})\n\nsearchInt.addEventListener('change', _App_dom__WEBPACK_IMPORTED_MODULE_2__.displayMatches);\nsearchInt.addEventListener('keyup', _App_dom__WEBPACK_IMPORTED_MODULE_2__.displayMatches);\n\n\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/assets/images/icons/geo-location-icon.svg":
+/*!*******************************************************!*\
+  !*** ./src/assets/images/icons/geo-location-icon.svg ***!
+  \*******************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"fda555ee7f3934b71b3b.svg\";\n\n//# sourceURL=webpack://weather-app/./src/assets/images/icons/geo-location-icon.svg?");
 
 /***/ })
 
@@ -156,6 +196,9 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -181,6 +224,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -195,6 +250,52 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
 /************************************************************************/

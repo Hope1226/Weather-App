@@ -29,5 +29,4 @@ const cityNames = async () => {
   return cityList;
 };
 
-
 export { cityNames, data };
